@@ -1,37 +1,3 @@
-<?php
-
-if (isset($_POST['submit'])) {
-    //print_r('firstname: ' . $_POST['firstname']);
-    //print_r('<br>');
-    //print_r('lastname: ' . $_POST['lastname']);
-    //print_r('<br>');
-    //print_r('email: ' . $_POST['email']);
-    //print_r('<br>');
-    //print_r('number: ' . $_POST['number']);
-    //print_r('<br>');
-    //print_r('password: ' . $_POST['password']);
-    //print_r('<br>');
-    //print_r('confirmPassword: ' . $_POST['confirmPassword']);
-    //print_r('<br>');
-    //print_r('gender: ' . $_POST['gender']);
-    //print_r('<br>');
-
- require('conexao.php');
-
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
-    $email = $_POST['email'];
-    $number = $_POST['number'];
-    $password = $_POST['password'];
-    $confirmPassword = $_POST['confirmPassword'];
-    $gender = $_POST['gender'];
-
-
-    $result = mysqli_query($con, "INSERT INTO cadastro(firstname, lastname, email, number, password, confirmPassword, gender) 
-    VALUES ('$firstname','$lastname','$email','$number','$password','$confirmPassword','$gender')");
-}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -121,6 +87,25 @@ if (isset($_POST['submit'])) {
                     </br>
                     </br>
                     <button><a href="login.php">Cadastrar-se</a></button>
+                    <?php
+
+                    if (isset($_POST["submit"])) {
+
+                        require('conexao.php');
+
+                        $firstname = $_POST["firstname"];
+                        $lastname = $_POST["lastname"];
+                        $email = $_POST["email"];
+                        $number = $_POST["number"];
+                        $password = $_POST["password"];
+                        $confirmPassword = $_POST["confirmPassword"];
+                        $gender = $_POST["gender"];
+
+
+                        $result = mysqli_query($con, "INSERT INTO cadastro(firstname, lastname, email, number, password, confirmPassword, gender) 
+                                                    VALUES ('$firstname','$lastname','$email','$number','$password','$confirmPassword','$gender')");
+                    }
+                    ?>
                 </div>
             </form>
         </div>

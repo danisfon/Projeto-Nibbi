@@ -1,3 +1,44 @@
+<?php
+session_start();
+
+//conectar no banco de dados
+include("conexao.php");
+
+//obter os dados do formulário
+@$email = $_POST["email"];
+@$password = $_POST["password"];
+
+if (isset($_POST["email"])) {
+    $email = addslashes(trim($_POST["email"]));
+}
+
+if (isset($_POST["password"])) {
+    $password = md5(trim($_POST["password"]));
+}
+
+//validar o usuário no BD
+$sql = "SELECT * FROM 'cadastro' WHERE email='$email' AND password='$password'";
+
+// $result = $con->query($sql);
+
+// $total_de_usuarios = $result->num_rows;
+
+// if ($total_de_usuarios == 1) {
+//     $dados = $result->fetch_assoc();
+
+//     //salva os dados na sessão
+//     $_SESSION["email"] = $dados["email"];
+//     $_SESSION["password"] = $dados["password"];
+
+//     //redirecionar para a página restrita
+//     header("Location: joias.php");
+//     exit;
+// } else {
+//     echo "<p>Usuário não encontrado</p>";
+//     echo "<a href=\"index.php\">Voltar</a>";
+// }
+
+?>
 <!DOCTYPE html>
 
 <html lang="en">
